@@ -1,98 +1,58 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Ajustes LzPlay VIP</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    body {
-      background-color: #000;
-      color: #fff;
-      font-family: 'Arial', sans-serif;
-    }
-  </style>
 </head>
-<body class="min-h-screen flex items-center justify-center p-4">
+<body class="bg-black text-white p-4 space-y-4">
 
-  <div class="w-full max-w-md bg-[#1a1a1a] p-6 rounded-xl shadow-2xl space-y-6">
-    <h1 class="text-2xl font-bold text-center mb-4">🎨 Ajustes de la App</h1>
+  <h1 class="text-xl">⚙️ Ajustes Visuales</h1>
 
-    <!-- Color fondo -->
-    <div class="space-y-2">
-      <label class="block font-semibold">Color de Fondo:</label>
-      <input type="color" id="fondo" class="w-full h-12 rounded"/>
-    </div>
-
-    <!-- Color texto -->
-    <div class="space-y-2">
-      <label class="block font-semibold">Color de Texto:</label>
-      <input type="color" id="color_texto" class="w-full h-12 rounded"/>
-    </div>
-
-    <!-- Botones -->
-    <div class="space-y-2">
-      <label class="block font-semibold">Estilo de Botones "Ver más":</label>
-      <select id="botones" class="w-full p-2 rounded bg-gray-800 text-white">
-        <option value="normal">Rojo Clásico</option>
-        <option value="neon">Neón Degradado</option>
-      </select>
-    </div>
-
-    <!-- Barra inferior -->
-    <div class="space-y-2">
-      <label class="block font-semibold">Color de la Barra Inferior:</label>
-      <input type="color" id="navbar_color" class="w-full h-12 rounded"/>
-    </div>
-
-    <!-- Efecto nieve -->
-    <div class="flex items-center space-x-2">
-      <input type="checkbox" id="efecto_nieve" class="h-5 w-5">
-      <label for="efecto_nieve" class="font-semibold">Activar Efecto de Nieve</label>
-    </div>
-
-    <!-- Bordes redondeados -->
-    <div class="flex items-center space-x-2">
-      <input type="checkbox" id="bordes_redondeados" class="h-5 w-5">
-      <label for="bordes_redondeados" class="font-semibold">Bordes Redondeados Globales</label>
-    </div>
-
-    <!-- Guardar -->
-    <button onclick="guardar()" class="w-full py-3 bg-green-600 hover:bg-green-700 rounded-lg font-semibold shadow-lg">
-      Guardar Cambios
-    </button>
+  <div>
+    <label class="block mb-1">Color de fondo:</label>
+    <input type="color" id="fondo" class="w-full h-10 rounded" />
   </div>
 
-  <script>
-    var ajustes = JSON.parse(localStorage.getItem("ajustesLzPlay")) || {
-      fondo: "#0F0F0F",
-      color_texto: "#FFFFFF",
-      botones: "normal",
-      navbar_color: "#1E1E1E",
-      efecto_nieve: false,
-      bordes_redondeados: false
-    };
+  <div>
+    <label class="block mb-1">Estilo de botones "Ver más":</label>
+    <select id="botones" class="w-full p-2 rounded bg-gray-800">
+      <option value="normal">Rojo Clásico</option>
+      <option value="neon">Neón Degradado</option>
+    </select>
+  </div>
 
+  <div>
+    <label class="block mb-1">Efecto Visual:</label>
+    <select id="efecto" class="w-full p-2 rounded bg-gray-800">
+      <option value="ninguno">Sin Efecto</option>
+      <option value="nieve">Copos de Nieve</option>
+      <option value="calabazas">Calabazas</option>
+      <option value="corazones">Corazones</option>
+      <option value="lzplay">Logo LzPlay</option>
+    </select>
+  </div>
+
+  <button onclick="guardar()" class="bg-green-600 hover:bg-green-700 py-2 px-4 rounded w-full">
+    Guardar Cambios
+  </button>
+
+  <script>
+    var ajustes = JSON.parse(localStorage.getItem("ajustesLzPlay")) || { fondo: "#0F0F0F", botones: "normal", efecto: "ninguno" };
     document.getElementById("fondo").value = ajustes.fondo;
-    document.getElementById("color_texto").value = ajustes.color_texto;
     document.getElementById("botones").value = ajustes.botones;
-    document.getElementById("navbar_color").value = ajustes.navbar_color;
-    document.getElementById("efecto_nieve").checked = ajustes.efecto_nieve;
-    document.getElementById("bordes_redondeados").checked = ajustes.bordes_redondeados;
+    document.getElementById("efecto").value = ajustes.efecto;
 
     function guardar() {
       var nuevos = {
         fondo: document.getElementById("fondo").value,
-        color_texto: document.getElementById("color_texto").value,
         botones: document.getElementById("botones").value,
-        navbar_color: document.getElementById("navbar_color").value,
-        efecto_nieve: document.getElementById("efecto_nieve").checked,
-        bordes_redondeados: document.getElementById("bordes_redondeados").checked
+        efecto: document.getElementById("efecto").value
       };
       localStorage.setItem("ajustesLzPlay", JSON.stringify(nuevos));
-      alert("¡Ajustes guardados! Reinicia la app para aplicar los cambios.");
+      alert("✅ Ajustes guardados. Reinicia la app para aplicarlos.");
     }
   </script>
-
 </body>
 </html>
