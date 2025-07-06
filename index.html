@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -16,124 +16,76 @@
 </head>
 <body class="text-white w-screen h-screen overflow-hidden">
 
-<!-- CONTENIDO -->
+<!-- Menú superior -->
 <div class="w-full h-full flex flex-col overflow-hidden relative">
-
-  <!-- Top bar -->
   <div class="px-4 pt-6 pb-3 space-y-3">
     <div class="flex items-center justify-between">
       <div class="h-6 w-auto">
         <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi3dK3-XAKrEia-lWmiUqAYRfFQ1lR9eJX6ZZH8e_vHf576qf9GJjIWBW9Jg5LsilXX7WO2MOEkg5gzc4pESziaPeMJ9ws9mwtCDdp3p_17D0e0Uop_ZxavwwJeNLBvoyZJ0cxTKQpjzrJIR6LjJslB24tj-77AYrRCacQ3F2S2VPoXpPzPhM1zndxyd1Rg/s3307/B64D5386-DCA4-410B-A0A6-6ACB19D0A06F.png" alt="Mi Logo" class="h-full object-contain"/>
       </div>
-      <a href="https://zinecia.github.io/Buscador/"><button class="text-white text-lg">
-        <i class="fas fa-search"></i>
-      </button></a>
-    </div>
-
-    <!-- Menú -->
-    <div class="flex overflow-x-auto space-x-3 scrollbar-hide text-xs font-semibold">
-      <a href="https://zinecia.github.io/movie/" class="bg-[#1E1E1E] rounded-full px-4 py-1 flex-shrink-0">Movies</a>
-      <a href="https://zinecia.github.io/serie/" class="bg-[#1E1E1E] rounded-full px-4 py-1 flex-shrink-0">TV Shows</a>
-      <a href="https://zinecia.github.io/anime/" class="bg-[#1E1E1E] rounded-full px-4 py-1 flex-shrink-0">Anime</a>
-      <a href="https://zinecia.github.io/kdrama/" class="bg-[#1E1E1E] rounded-full px-4 py-1 flex-shrink-0">K-Drama</a>
+      <div class="flex items-center gap-2">
+        <a href="ajustes.html" class="text-white text-xl"><i class="fas fa-cog"></i></a>
+        <a href="https://zinecia.github.io/Buscador/" class="text-white text-lg"><i class="fas fa-search"></i></a>
+      </div>
     </div>
   </div>
 
   <!-- Contenido principal -->
   <div class="flex-1 overflow-y-auto px-4 space-y-6 pb-32">
-
-    <!-- Sección ejemplo -->
     <div id="tvshows">
       <div class="flex justify-between items-center mb-3">
         <h2 class="text-white font-semibold text-base">Acción</h2>
-        <a href="https://zinecia.github.io/label-accion/" class="boton-ver-mas flex items-center gap-1 bg-red-600 text-white text-sm font-medium py-1.5 px-3 rounded-full shadow transition duration-300">
+        <a href="#" class="boton-ver-mas flex items-center gap-1 bg-red-600 text-white text-sm font-medium py-1.5 px-3 rounded-full shadow transition duration-300">
           Ver más <i class="fas fa-arrow-right ml-1"></i>
         </a>
       </div>
       <div class="flex overflow-x-auto space-x-3 scrollbar-hide whitespace-nowrap">
+        <!-- Películas -->
         <a href="#" class="flex-shrink-0 w-[120px]">
-          <img src="https://image.tmdb.org/t/p/w500/luEfodfF9EZ8RZCPadFBpauYkgi.jpg" alt="Ejemplo" class="w-full h-[170px] rounded-lg object-cover"/>
-          <p class="text-white text-sm mt-1 truncate">Ejemplo Película</p>
+          <img src="https://image.tmdb.org/t/p/w500/luEfodfF9EZ8RZCPadFBpauYkgi.jpg" alt="Peli" class="w-full h-[170px] rounded-lg object-cover"/>
+          <p class="text-white text-sm mt-1 truncate">Ejemplo Peli</p>
         </a>
       </div>
     </div>
-
   </div>
 
   <!-- Barra inferior -->
   <nav class="fixed bottom-0 left-0 w-full bg-[#1E1E1E] flex justify-around items-center py-3 rounded-b-3xl text-white text-xs font-semibold z-50">
-    <a href="https://zinecia.github.io/Home" class="flex flex-col items-center text-red-600">
+    <a href="#" class="flex flex-col items-center text-red-600">
       <i class="fas fa-home text-xl"></i><span>Inicio</span>
     </a>
-    <a href="https://zinecia.github.io/serie/" class="flex flex-col items-center">
+    <a href="#" class="flex flex-col items-center">
       <i class="fas fa-tv text-xl"></i><span>Series</span>
     </a>
-    <a href="https://zinecia.github.io/Favoritos/" class="flex flex-col items-center">
+    <a href="#" class="flex flex-col items-center">
       <i class="fas fa-heart text-xl"></i><span>Favoritos</span>
     </a>
     <a href="https://zinecia.github.io/Buscador/" class="flex flex-col items-center">
       <i class="fas fa-search text-xl"></i><span>Buscar</span>
     </a>
-    <a href="ajustes.html" class="flex flex-col items-center">
-  <i class="fas fa-cog text-xl"></i><span>Ajustes</span>
-</a>
-
   </nav>
-
 </div>
 
-<!-- APLICAR AJUSTES -->
 <script>
-var ajustesApp = JSON.parse(localStorage.getItem("ajustesLzPlay")) || {
-  fondo: "#0F0F0F",
-  color_texto: "#FFFFFF",
-  botones: "normal",
-  navbar_color: "#1E1E1E",
-  efecto_nieve: false,
-  bordes_redondeados: false
-};
-
-function aplicarAjustes() {
-  document.body.style.backgroundColor = ajustesApp.fondo;
-  document.body.style.color = ajustesApp.color_texto;
-
-  var botones = document.querySelectorAll(".boton-ver-mas");
-  botones.forEach(btn => {
-    btn.classList.remove("bg-red-600", "bg-gradient-to-r", "from-pink-500", "to-yellow-500", "shadow-xl");
-    if (ajustesApp.botones === "neon") {
-      btn.classList.add("bg-gradient-to-r", "from-pink-500", "to-yellow-500", "shadow-xl");
-    } else {
-      btn.classList.add("bg-red-600");
-    }
-  });
-
-  var navbar = document.querySelector("nav");
-  if (navbar) {
-    navbar.style.backgroundColor = ajustesApp.navbar_color;
-  }
-
-  if (ajustesApp.bordes_redondeados) {
-    document.querySelectorAll("img, a, button, div, nav").forEach(el => {
-      el.style.borderRadius = "16px";
-    });
+// Cargar ajustes
+var ajustes = JSON.parse(localStorage.getItem("ajustesLzPlay")) || { fondo: "#0F0F0F", botones: "normal", efecto: "ninguno" };
+document.body.style.backgroundColor = ajustes.fondo;
+var btns = document.querySelectorAll(".boton-ver-mas");
+btns.forEach(btn => {
+  btn.classList.remove("bg-red-600", "bg-gradient-to-r", "from-pink-500", "to-yellow-500", "shadow-xl");
+  if (ajustes.botones === "neon") {
+    btn.classList.add("bg-gradient-to-r", "from-pink-500", "to-yellow-500", "shadow-xl");
   } else {
-    document.querySelectorAll("img, a, button, div, nav").forEach(el => {
-      el.style.borderRadius = "";
-    });
+    btn.classList.add("bg-red-600");
   }
+});
 
-  if (ajustesApp.efecto_nieve && !document.getElementById("nieveScript")) {
-    var script = document.createElement("script");
-    script.id = "nieveScript";
-    script.src = "https://cdn.jsdelivr.net/gh/lzplugins/efecto-nieve/nieve.js";
-    document.body.appendChild(script);
-  } else if (!ajustesApp.efecto_nieve && document.getElementById("nieveScript")) {
-    document.getElementById("nieveScript").remove();
-  }
+// Efectos visuales
+if (ajustes.efecto !== "ninguno") {
+  var script = document.createElement("script");
+  script.src = `efectos/${ajustes.efecto}.js`;
+  document.body.appendChild(script);
 }
-
-document.addEventListener("DOMContentLoaded", aplicarAjustes);
 </script>
-
 </body>
 </html>
