@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ajustes LzPlay VIP</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background: #0F0F0F; color: white; font-family: Arial, sans-serif; }
+  </style>
+</head>
+<body class="p-4">
+  <h1 class="text-2xl font-bold mb-6 text-center">🎨 Ajustes Visuales LzPlay</h1>
+
+  <div class="space-y-4">
+    <!-- Selector de efecto -->
+    <div>
+      <label class="block mb-1 text-lg">🌟 Efecto Animado:</label>
+      <select id="efecto" class="w-full p-2 rounded bg-gray-800 text-white">
+        <option value="">Sin efecto</option>
+        <option value="nieve">❄️ Nieve</option>
+        <option value="calabazas">🎃 Calabazas</option>
+        <option value="corazones">❤️ Corazones</option>
+        <option value="lzplay">⭐ Logo LzPlay</option>
+      </select>
+    </div>
+
+    <!-- Color de fondo -->
+    <div>
+      <label class="block mb-1 text-lg">🎨 Color de fondo:</label>
+      <input type="color" id="fondo" class="w-full h-12 rounded">
+    </div>
+
+    <!-- Botón Estilo -->
+    <div>
+      <label class="block mb-1 text-lg">✨ Estilo de botones "Ver más":</label>
+      <select id="botones" class="w-full p-2 rounded bg-gray-800 text-white">
+        <option value="normal">Rojo clásico</option>
+        <option value="neon">Neón degradado</option>
+      </select>
+    </div>
+
+    <!-- Botón Guardar -->
+    <button onclick="guardar()" class="bg-green-600 hover:bg-green-700 w-full py-3 rounded text-lg font-semibold">
+      💾 Guardar Cambios
+    </button>
+  </div>
+
+  <script>
+    // Cargar ajustes actuales
+    var ajustes = JSON.parse(localStorage.getItem("ajustesLzPlay")) || {
+      efecto: "",
+      fondo: "#0F0F0F",
+      botones: "normal"
+    };
+
+    // Mostrar ajustes en pantalla
+    document.getElementById("efecto").value = ajustes.efecto;
+    document.getElementById("fondo").value = ajustes.fondo;
+    document.getElementById("botones").value = ajustes.botones;
+
+    function guardar() {
+      var nuevos = {
+        efecto: document.getElementById("efecto").value,
+        fondo: document.getElementById("fondo").value,
+        botones: document.getElementById("botones").value
+      };
+
+      localStorage.setItem("ajustesLzPlay", JSON.stringify(nuevos));
+      alert("✅ Ajustes guardados. Vuelve a la app principal para ver los cambios.");
+    }
+  </script>
+</body>
+</html>
