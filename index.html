@@ -3,96 +3,133 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Ajustes LzPlay VIP</title>
+  <title>LzPlay VIP</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2468/2468825.png" type="image/png" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
   <style>
-    body {
-      background-color: #000;
-      color: #fff;
-      font-family: 'Arial', sans-serif;
-    }
+    body { font-family: 'Inter', sans-serif; }
+    .scrollbar-hide::-webkit-scrollbar { display: none; }
+    .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
   </style>
 </head>
-<body class="min-h-screen flex items-center justify-center p-4">
+<body class="text-white w-screen h-screen overflow-hidden">
 
-  <div class="w-full max-w-md bg-[#1a1a1a] p-6 rounded-xl shadow-2xl space-y-6">
-    <h1 class="text-2xl font-bold text-center mb-4">🎨 Ajustes de la App</h1>
+<!-- CONTENIDO -->
+<div class="w-full h-full flex flex-col overflow-hidden relative">
 
-    <!-- Color fondo -->
-    <div class="space-y-2">
-      <label class="block font-semibold">Color de Fondo:</label>
-      <input type="color" id="fondo" class="w-full h-12 rounded"/>
+  <!-- Top bar -->
+  <div class="px-4 pt-6 pb-3 space-y-3">
+    <div class="flex items-center justify-between">
+      <div class="h-6 w-auto">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi3dK3-XAKrEia-lWmiUqAYRfFQ1lR9eJX6ZZH8e_vHf576qf9GJjIWBW9Jg5LsilXX7WO2MOEkg5gzc4pESziaPeMJ9ws9mwtCDdp3p_17D0e0Uop_ZxavwwJeNLBvoyZJ0cxTKQpjzrJIR6LjJslB24tj-77AYrRCacQ3F2S2VPoXpPzPhM1zndxyd1Rg/s3307/B64D5386-DCA4-410B-A0A6-6ACB19D0A06F.png" alt="Mi Logo" class="h-full object-contain"/>
+      </div>
+      <a href="https://zinecia.github.io/Buscador/"><button class="text-white text-lg">
+        <i class="fas fa-search"></i>
+      </button></a>
     </div>
 
-    <!-- Color texto -->
-    <div class="space-y-2">
-      <label class="block font-semibold">Color de Texto:</label>
-      <input type="color" id="color_texto" class="w-full h-12 rounded"/>
+    <!-- Menú -->
+    <div class="flex overflow-x-auto space-x-3 scrollbar-hide text-xs font-semibold">
+      <a href="https://zinecia.github.io/movie/" class="bg-[#1E1E1E] rounded-full px-4 py-1 flex-shrink-0">Movies</a>
+      <a href="https://zinecia.github.io/serie/" class="bg-[#1E1E1E] rounded-full px-4 py-1 flex-shrink-0">TV Shows</a>
+      <a href="https://zinecia.github.io/anime/" class="bg-[#1E1E1E] rounded-full px-4 py-1 flex-shrink-0">Anime</a>
+      <a href="https://zinecia.github.io/kdrama/" class="bg-[#1E1E1E] rounded-full px-4 py-1 flex-shrink-0">K-Drama</a>
     </div>
-
-    <!-- Botones -->
-    <div class="space-y-2">
-      <label class="block font-semibold">Estilo de Botones "Ver más":</label>
-      <select id="botones" class="w-full p-2 rounded bg-gray-800 text-white">
-        <option value="normal">Rojo Clásico</option>
-        <option value="neon">Neón Degradado</option>
-      </select>
-    </div>
-
-    <!-- Barra inferior -->
-    <div class="space-y-2">
-      <label class="block font-semibold">Color de la Barra Inferior:</label>
-      <input type="color" id="navbar_color" class="w-full h-12 rounded"/>
-    </div>
-
-    <!-- Efecto nieve -->
-    <div class="flex items-center space-x-2">
-      <input type="checkbox" id="efecto_nieve" class="h-5 w-5">
-      <label for="efecto_nieve" class="font-semibold">Activar Efecto de Nieve</label>
-    </div>
-
-    <!-- Bordes redondeados -->
-    <div class="flex items-center space-x-2">
-      <input type="checkbox" id="bordes_redondeados" class="h-5 w-5">
-      <label for="bordes_redondeados" class="font-semibold">Bordes Redondeados Globales</label>
-    </div>
-
-    <!-- Guardar -->
-    <button onclick="guardar()" class="w-full py-3 bg-green-600 hover:bg-green-700 rounded-lg font-semibold shadow-lg">
-      Guardar Cambios
-    </button>
   </div>
 
-  <script>
-    var ajustes = JSON.parse(localStorage.getItem("ajustesLzPlay")) || {
-      fondo: "#0F0F0F",
-      color_texto: "#FFFFFF",
-      botones: "normal",
-      navbar_color: "#1E1E1E",
-      efecto_nieve: false,
-      bordes_redondeados: false
-    };
+  <!-- Contenido principal -->
+  <div class="flex-1 overflow-y-auto px-4 space-y-6 pb-32">
 
-    document.getElementById("fondo").value = ajustes.fondo;
-    document.getElementById("color_texto").value = ajustes.color_texto;
-    document.getElementById("botones").value = ajustes.botones;
-    document.getElementById("navbar_color").value = ajustes.navbar_color;
-    document.getElementById("efecto_nieve").checked = ajustes.efecto_nieve;
-    document.getElementById("bordes_redondeados").checked = ajustes.bordes_redondeados;
+    <!-- Sección ejemplo -->
+    <div id="tvshows">
+      <div class="flex justify-between items-center mb-3">
+        <h2 class="text-white font-semibold text-base">Acción</h2>
+        <a href="https://zinecia.github.io/label-accion/" class="boton-ver-mas flex items-center gap-1 bg-red-600 text-white text-sm font-medium py-1.5 px-3 rounded-full shadow transition duration-300">
+          Ver más <i class="fas fa-arrow-right ml-1"></i>
+        </a>
+      </div>
+      <div class="flex overflow-x-auto space-x-3 scrollbar-hide whitespace-nowrap">
+        <a href="#" class="flex-shrink-0 w-[120px]">
+          <img src="https://image.tmdb.org/t/p/w500/luEfodfF9EZ8RZCPadFBpauYkgi.jpg" alt="Ejemplo" class="w-full h-[170px] rounded-lg object-cover"/>
+          <p class="text-white text-sm mt-1 truncate">Ejemplo Película</p>
+        </a>
+      </div>
+    </div>
 
-    function guardar() {
-      var nuevos = {
-        fondo: document.getElementById("fondo").value,
-        color_texto: document.getElementById("color_texto").value,
-        botones: document.getElementById("botones").value,
-        navbar_color: document.getElementById("navbar_color").value,
-        efecto_nieve: document.getElementById("efecto_nieve").checked,
-        bordes_redondeados: document.getElementById("bordes_redondeados").checked
-      };
-      localStorage.setItem("ajustesLzPlay", JSON.stringify(nuevos));
-      alert("¡Ajustes guardados! Reinicia la app para aplicar los cambios.");
+  </div>
+
+  <!-- Barra inferior -->
+  <nav class="fixed bottom-0 left-0 w-full bg-[#1E1E1E] flex justify-around items-center py-3 rounded-b-3xl text-white text-xs font-semibold z-50">
+    <a href="https://zinecia.github.io/Home" class="flex flex-col items-center text-red-600">
+      <i class="fas fa-home text-xl"></i><span>Inicio</span>
+    </a>
+    <a href="https://zinecia.github.io/serie/" class="flex flex-col items-center">
+      <i class="fas fa-tv text-xl"></i><span>Series</span>
+    </a>
+    <a href="https://zinecia.github.io/Favoritos/" class="flex flex-col items-center">
+      <i class="fas fa-heart text-xl"></i><span>Favoritos</span>
+    </a>
+    <a href="https://zinecia.github.io/Buscador/" class="flex flex-col items-center">
+      <i class="fas fa-search text-xl"></i><span>Buscar</span>
+    </a>
+  </nav>
+
+</div>
+
+<!-- APLICAR AJUSTES -->
+<script>
+var ajustesApp = JSON.parse(localStorage.getItem("ajustesLzPlay")) || {
+  fondo: "#0F0F0F",
+  color_texto: "#FFFFFF",
+  botones: "normal",
+  navbar_color: "#1E1E1E",
+  efecto_nieve: false,
+  bordes_redondeados: false
+};
+
+function aplicarAjustes() {
+  document.body.style.backgroundColor = ajustesApp.fondo;
+  document.body.style.color = ajustesApp.color_texto;
+
+  var botones = document.querySelectorAll(".boton-ver-mas");
+  botones.forEach(btn => {
+    btn.classList.remove("bg-red-600", "bg-gradient-to-r", "from-pink-500", "to-yellow-500", "shadow-xl");
+    if (ajustesApp.botones === "neon") {
+      btn.classList.add("bg-gradient-to-r", "from-pink-500", "to-yellow-500", "shadow-xl");
+    } else {
+      btn.classList.add("bg-red-600");
     }
-  </script>
+  });
+
+  var navbar = document.querySelector("nav");
+  if (navbar) {
+    navbar.style.backgroundColor = ajustesApp.navbar_color;
+  }
+
+  if (ajustesApp.bordes_redondeados) {
+    document.querySelectorAll("img, a, button, div, nav").forEach(el => {
+      el.style.borderRadius = "16px";
+    });
+  } else {
+    document.querySelectorAll("img, a, button, div, nav").forEach(el => {
+      el.style.borderRadius = "";
+    });
+  }
+
+  if (ajustesApp.efecto_nieve && !document.getElementById("nieveScript")) {
+    var script = document.createElement("script");
+    script.id = "nieveScript";
+    script.src = "https://cdn.jsdelivr.net/gh/lzplugins/efecto-nieve/nieve.js";
+    document.body.appendChild(script);
+  } else if (!ajustesApp.efecto_nieve && document.getElementById("nieveScript")) {
+    document.getElementById("nieveScript").remove();
+  }
+}
+
+document.addEventListener("DOMContentLoaded", aplicarAjustes);
+</script>
 
 </body>
 </html>
